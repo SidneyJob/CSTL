@@ -11,7 +11,6 @@ def print_cookies(cookies):
 def reset_password():
     cookies = []
 
-
     try:
         if request.args.get('password'):
             reset = request.args.get('password')
