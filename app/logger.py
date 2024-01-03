@@ -1,6 +1,5 @@
 import logging
 import os
-# from logging import StreamHandler
 
 
 def setup_logger():

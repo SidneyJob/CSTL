@@ -1,7 +1,8 @@
 from flask import Flask
 from views import lab_views
-import ssl
 from logger import setup_logger
+import ssl
+import os
 
 ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 ctx.load_cert_chain('certs/cert.pem', 'certs/privkey.pem')
@@ -9,7 +10,7 @@ ctx.load_cert_chain('certs/cert.pem', 'certs/privkey.pem')
 app = Flask(__name__, template_folder='templates')
 app.register_blueprint(lab_views, url_prefix="/", name="lab_views")
 
-app.config.from_pyfile("config.py")
+app.secret_key = os.getenv("SECRET_KEY")
 
 # disable logging requests
 # app.logger.disabled = True
