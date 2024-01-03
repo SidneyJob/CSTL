@@ -1,3 +1,5 @@
-.venv/
-Lab/certs/ 
-__pycache__
+.venv
+env
+app/__pycache__
+__pycache__/
+*.pyc
