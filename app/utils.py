@@ -1,8 +1,11 @@
 from flask import render_template, make_response
-from colorama import Fore, Style
+# from colorama import Fore, Style
+from logger import setup_logger
 import random
 import jwt
 import os
+
+logger = setup_logger()
 
 
 def gen_random_string(lenght):
@@ -39,7 +42,7 @@ def return_cookie(request):
         res.set_cookie('Strict', generate_jwt(), samesite="Strict")
         res.set_cookie('None_SameSite', generate_jwt())
 
-        print(Fore.GREEN + '[+] Set cookie!' + Style.RESET_ALL)
+        logger.info('Set cookie!')
         return res
     else:
         res = make_response(render_template(
@@ -49,7 +52,7 @@ def return_cookie(request):
 
 
 def check_result(request):
-    authorized = 0
+    # authorized = 0
 
     if request.method == "GET":
         data = dict(request.args)
@@ -60,28 +63,34 @@ def check_result(request):
     else:
         data = {"None": "None"}
 
+    # СООБЩЕНИЯ ОТ TOKIAKASU
+    # Логируется строка вида "GET https://localhost:8081/reset_password"
+    logger.info(f"{request.method} {request.url}")
 
+    # Предыдущая реализация вывода кук при запросе
+    # logger.info("Cookies:")
+    # for cookie_name, cookie_value in dict(request.cookies).items():
+    #     logger.info(f"    [+] {cookie_name}: {cookie_value}")
+    #     if cookie_name:
+    #         authorized = 1
+    
+    # Куки соединяются в единую строку, включая символы переносы строки
+    cookies_info = "\n".join([f"[+] {cookie_name}: {cookie_value}"
+                              for cookie_name, cookie_value
+                              in dict(request.cookies).items()
+                              if cookie_name is not None])
 
-# PRINT DATA
-    print_c(f"""{(100//2 - len("REQUEST INFO")) * "+"}REQUEST INFO{(100//2)  * "+"}""", "RED")
-    print_c(f"""[+] URL: {request.url}\n[+] Method: {request.method}\n""", "RED")
+    # после полученная строка вставляется в лог
+    logger.info(f"Cookies:\n{cookies_info}")
 
-    print_c(f"[++] Cookies:", "GREEN")
-    for cookie_name, cookie_value in dict(request.cookies).items():
-        print_c(f"    [+] {cookie_name}: {cookie_value}", "MAGENTA")
-        if cookie_name:
-            authorized = 1
-
-    print_c(f"\n[++] Data:", "BLUE")
+    # код не трогал, ибо не видел данных с ними
+    logger.info("Data:")
     for data_name, data_value in data.items():
-        print_c(f"    [+] {data_name}: {data_value}","MAGENTA")    
+        logger.info(f"[+] {data_name}: {data_value}")
 
-    print_c(f"\n[++] Headers:", "YELLOW")
+    logger.info("\nHeaders:")
 
-    # ARTEM ARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEM 
-
-    print_c(f"""{(100//2 - len("END")) * "+"}END{(100//2)  * "+"}""", "RED")
-    if authorized:
+    if cookies_info:
         return True
     else:
         return False
