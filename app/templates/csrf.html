@@ -1,17 +1,18 @@
-<script type="text/javascript" src="script.js"></script>
+<script src="main.js" type="text/javascript" ></script>
+<script src="csrf.js" type="text/javascript" ></script>
+<script src="cors.js" type="text/javascript" ></script>
+
+
+<h2>Cookies</h2>
+    {% for i in cook %}
+        <li>{{i}}: {{cook[i]}}</li>
+    {% endfor %}
+
+
 
 
 <div>
-    <h3>Images</h3>
-    <img id="img_none" src="" alt="NoneImg">
-    <img id="img_lax" src="" alt="LaxImg">
-    <img id="img_strict" src="" alt="StrictImg">
-</div>
-
-
-
-<div>
-    <h2>Forms</h2>
+    <h2>CSRF Forms</h2>
 
     <div>          <!-- None  -->
         <form id="Same-Site-None-Get">
@@ -45,7 +46,6 @@
             <button type="submit" id="StrictPost">Send Post Request to Strict page</button>
         </form>
     </div>
-
 </div>
 
 
@@ -64,34 +64,12 @@
 </div>
 
 
-
-
-
-
-
-
-
-<script>
-
-
-
-
-
-
-main();
-
-/*
-Description:
-
-
-*/
-
-</script>
-
-
-
-
-
+<div>
+    <h3>Images</h3>
+    <img id="img_none" src="" >
+    <img id="img_lax" src="" >
+    <img id="img_strict" src="" >
+</div>
 
 
 

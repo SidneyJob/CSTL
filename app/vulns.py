@@ -11,40 +11,7 @@ def print_cookies(cookies):
 def reset_password():
     cookies = []
 
-    try:
-        if request.args.get('password'):
-            reset = request.args.get('password')
-        else:
-            reset = request.form.get('password')
-            print(reset, "FORM")
-
-    except:
-        reset = "None"
-
-
-    if request.cookies.get('None'):
-        cookies.append(f'None: {request.cookies.get("Strict")}')
-
-    if request.cookies.get('Lax'):
-        cookies.append(f'Lax: {request.cookies.get("Lax")}')
-
-    if request.cookies.get('Strict'):
-        cookies.append(f'Strict: {request.cookies.get("Strict")}')
-
-
-    if reset:
-        print_c(f"""
-<----------------------------------------->
-             !!!!!! WARNING !!!!!!
-[+] Successfull password reset!
-[*] Recived password: {reset}
-[*] Recived cookies: [
-{print_cookies(cookies)}
-]
-[*] Attacked URL: {request.url}
-[*] Method: [{request.method}]
-<----------------------------------------->
-""", "GREEN")
+    if check_result(request):
         return "Successfull reset!"
 
     return "None"
@@ -62,8 +29,11 @@ try:
             {"key":None}
         ))
 
-        Origin = request.headers['Origin']
-
+        try:
+            Origin = request.headers['Origin']
+        except:
+            Origin = "https://discovery-lab.su"
+            
         res.headers['Content-Type'] = "application/json"
         res.headers['Access-Control-Allow-Origin'] = Origin   
         res.headers['Access-Control-Allow-Credentials'] = 'true' 
@@ -112,30 +82,7 @@ try:
         res.headers['Content-Type'] = "application/json"
         res.headers['Access-Control-Allow-Origin'] = "*"    
 
-        cookies = []
-        if request.cookies.get('None'):
-            cookies.append(f'None: {request.cookies.get("Strict")}')
-
-        if request.cookies.get('Lax'):
-            cookies.append(f'Lax: {request.cookies.get("Lax")}')
-
-        if request.cookies.get('Strict'):
-            cookies.append(f'Strict: {request.cookies.get("Strict")}')
-
-        if cookies:
-            print_c(f"""
- <----------------------------------------->
-            !!!!!! WARNING !!!!!!
-[+] Authentification passed!
-[+] URL: {request.url}
-[*] Recived cookies: [
-{print_cookies(cookies)}
-]
- <----------------------------------------->
-            """,
-            'RED'
-        )
-            
+        if check_result(request):
             res.data = json.dumps(
                 {"key":f"SidneyJob{{{gen_random_string(16)}_creds_page}}"}
             )
@@ -154,30 +101,7 @@ try:
         res.headers['Access-Control-Allow-Origin'] = 'null'
         res.headers['Access-Control-Allow-Credentials'] = 'true'
 
-        cookies = []
-        if request.cookies.get('None'):
-            cookies.append(f'None: {request.cookies.get("None")}')
-
-        if request.cookies.get('Lax'):
-            cookies.append(f'Lax: {request.cookies.get("Lax")}')
-
-        if request.cookies.get('Strict'):
-            cookies.append(f'Strict: {request.cookies.get("Strict")}')
-
-        if cookies:
-            print_c(f"""
- <----------------------------------------->
-            !!!!!! WARNING !!!!!!
-[+] Authentification passed!
-[+] URL: {request.url}
-[*] Recived cookies: [
-{print_cookies(cookies)}
-]
- <----------------------------------------->
-            """,
-            'RED'
-        )
-            
+        if check_result(request):
             res.data = json.dumps(
                 {"key":f"SidneyJob{{{gen_random_string(16)}_null_page}}"}
             )
@@ -200,30 +124,7 @@ try:
         res.headers['Access-Control-Allow-Origin'] = "https://discovery.sidneyjob.ru"
         res.headers['Access-Control-Allow-Credentials'] = 'true'  
 
-        cookies = []
-        if request.cookies.get('None'):
-            cookies.append(f'None: {request.cookies.get("None")}')
-
-        if request.cookies.get('Lax'):
-            cookies.append(f'Lax: {request.cookies.get("Lax")}')
-
-        if request.cookies.get('Strict'):
-            cookies.append(f'Strict: {request.cookies.get("Strict")}')
-
-        if cookies:
-            print_c(f"""
- <----------------------------------------->
-            !!!!!! WARNING !!!!!!
-[+] Authentification passed!
-[+] URL: {request.url}
-[*] Recived cookies: [
-{print_cookies(cookies)}
-]
- <----------------------------------------->
-            """,
-            'RED'
-        )
-            
+        if check_result(request):
             res.data = json.dumps(
                 {"key":f"SidneyJob{{{gen_random_string(16)}_creds_page}}"}
             )

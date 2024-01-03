@@ -52,5 +52,41 @@ def return_cookie(request):
         res = make_response(render_template("index.html", cook=dict(request.cookies)))
         return res
 
+def check_result(request):
+    authorized = 0
 
+    if request.method == "GET":
+        data = dict(request.args)
+
+    elif request.method == "POST":
+        data = dict(request.form)
+
+    else:
+        data = {"None": "None"}
+
+
+
+    ############ PRINT DATA
+    print_c(f"""{(100//2 - len("REQUEST INFO")) * "+"}REQUEST INFO{(100//2)  * "+"}""", "RED")
+    print_c(f"""[+] URL: {request.url}\n[+] Method: {request.method}\n""", "RED")
+
+    print_c(f"[++] Cookies:", "GREEN")
+    for cookie_name, cookie_value in dict(request.cookies).items():
+        print_c(f"    [+] {cookie_name}: {cookie_value}", "MAGENTA")
+        if cookie_name:
+            authorized = 1
+
+    print_c(f"\n[++] Data:", "BLUE")
+    for data_name, data_value in data.items():
+        print_c(f"    [+] {data_name}: {data_value}","MAGENTA")    
+
+    print_c(f"\n[++] Headers:", "YELLOW")
+
+    # ARTEM ARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEMARTEM 
+    
+    print_c(f"""{(100//2 - len("END")) * "+"}END{(100//2)  * "+"}""", "RED")
+    if authorized:
+        return True
+    else:
+        return False
 
