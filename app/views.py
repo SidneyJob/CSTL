@@ -6,10 +6,12 @@ from flask import (
     Blueprint,
     Response
 )
+from logger import setup_logger
 
 import json
 import utils
 
+logger = setup_logger()
 lab_views = Blueprint('lab_views', __name__)
 
 
@@ -90,18 +92,8 @@ def api_gen():
         cookies.append(f'Strict: {request.cookies.get("Strict")}')
 
     if cookies:
-        utils.print_c(f"""
-<----------------------------------------->
-        !!!!!! WARNING !!!!!!
-[+] Authentification passed!
-[+] URL: {request.url}
-[*] Recived cookies: [
-{utils.print_cookies(cookies)}
-]
-<----------------------------------------->
-        """,
-        'RED'
-    )
+        logger.info(f"Authentication passed on {request.url}")
+        logger.info(f"Cookies:\n{utils.print_cookies(cookies)}")
 
         res.data = json.dumps(
             {"key": f"SidneyJob{{{utils.gen_random_string(16)}_gen_page}}"}

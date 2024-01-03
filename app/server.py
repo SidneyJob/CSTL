@@ -1,7 +1,7 @@
 from flask import Flask
 from views import lab_views
-import logging
 import ssl
+from logger import setup_logger
 
 ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 ctx.load_cert_chain('certs/cert.pem', 'certs/privkey.pem')
@@ -12,14 +12,15 @@ app.register_blueprint(lab_views, url_prefix="/", name="lab_views")
 app.config.from_pyfile("config.py")
 
 # disable logging requests
-app.logger.disabled = True
-log = logging.getLogger('werkzeug')
-log.disabled = True
+# app.logger.disabled = True
+# log_werkzeug = logging.getLogger('werkzeug')
+# log_werkzeug.disabled = True
 
-# start Server
+logger = setup_logger()
+
+# Start server
 if __name__ == "__main__":
-    # os.system('clear')
-    print("\t\t<-START-SERVER----------------------->", "MAGENTA")
+    logger.debug("Server started")
     app.run(
         host='0.0.0.0',
         port=8081,
