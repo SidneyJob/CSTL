@@ -19,7 +19,7 @@ def print_c(text, color):
 
 
 def print_cookies(cookies):
-    return "\t[+] " + "\n\t[+] ".join(cookies)
+    return "[+] " + "\n[+] ".join(cookies)
 
 
 def generate_jwt():
