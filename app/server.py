@@ -12,11 +12,6 @@ app.register_blueprint(lab_views, url_prefix="/", name="lab_views")
 
 app.secret_key = os.getenv("SECRET_KEY")
 
-# disable logging requests
-# app.logger.disabled = True
-# log_werkzeug = logging.getLogger('werkzeug')
-# log_werkzeug.disabled = True
-
 logger = setup_logger()
 
 # Start server
