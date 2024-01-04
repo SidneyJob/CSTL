@@ -11,6 +11,7 @@ app = Flask(__name__, template_folder='templates')
 app.register_blueprint(lab_views, url_prefix="/", name="lab_views")
 
 app.secret_key = os.getenv("SECRET_KEY")
+app.debug = os.getenv("FLASK_DEBUG", 'False').lower() in ['1', 'true']
 
 logger = setup_logger()
 
@@ -20,6 +21,6 @@ if __name__ == "__main__":
     app.run(
         host='0.0.0.0',
         port=8081,
-        debug=True,
+        # debug=True,
         # ssl_context=ctx
         )
