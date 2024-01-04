@@ -139,3 +139,20 @@ def api_correct():
 
         return res
     return res
+
+@lab_views.route('/api_wildcard', methods=['POST', 'GET'])
+def api_creds():
+    res = Response(json.dumps(
+        {"key": None}
+    ))
+
+    res.headers['Content-Type'] = "application/json"
+    res.headers['Access-Control-Allow-Origin'] = "*"    
+
+    if utils.check_result(request):
+        res.data = json.dumps(
+            {"key": f"SidneyJob{{{utils.gen_random_string(16)}_creds_page}}"}
+        )
+
+        return res
+    return res
