@@ -2,9 +2,16 @@ import logging
 import os
 
 
+def check_decision(environment_variable: str, default_value: str) -> bool: 
+    '''Checks if environment variable is True OR False'''
+    decision = os.getenv(environment_variable, default_value).lower() in ['true', 't', '1']
+
+    return decision
+
+
 def setup_logger():
-    LOG_REQUESTS = os.getenv("LOG_REQUESTS", 'False').lower() in ('true', '1', 't')
-    DEBUG_ENABLED = os.getenv("FLASK_DEBUG", 'False').lower() in ('true', '1', 't')
+    LOG_REQUESTS = check_decision("LOG_REQUESTS", 'False')
+    DEBUG_ENABLED = check_decision("FLASK_DEBUG", 'False')
 
     if DEBUG_ENABLED:
         LOG_LEVEL = "DEBUG"

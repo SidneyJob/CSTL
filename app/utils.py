@@ -8,11 +8,11 @@ import os
 logger = setup_logger()
 
 
-def gen_random_string(lenght):
+def gen_random_string(length: int) -> str:
     chars = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
     string = ''
 
-    for i in range(lenght):
+    for i in range(length):
         string += random.choice(chars)
     return string
 
