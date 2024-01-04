@@ -1,11 +1,11 @@
 from flask import Flask
 from views import lab_views
 from logger import setup_logger
-import ssl
+# import ssl
 import os
 
-ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-ctx.load_cert_chain('certs/cert.pem', 'certs/privkey.pem')
+# ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+# ctx.load_cert_chain('certs/cert.pem', 'certs/privkey.pem')
 
 app = Flask(__name__, template_folder='templates')
 app.register_blueprint(lab_views, url_prefix="/", name="lab_views")
@@ -21,5 +21,5 @@ if __name__ == "__main__":
         host='0.0.0.0',
         port=8081,
         debug=True,
-        ssl_context=ctx
+        # ssl_context=ctx
         )
