@@ -9,10 +9,12 @@ from flask import (
 from logger import setup_logger
 
 import json
+import os
 import utils
 
 logger = setup_logger()
 lab_views = Blueprint('lab_views', __name__)
+origin_domain = os.getenv("ORIGIN_DOMAIN")
 
 
 @lab_views.route('/', methods=['POST', 'GET'])
@@ -59,12 +61,12 @@ def api_gen():
     ))
 
     try:
-        Origin = request.headers['Origin']
+        origin = request.headers['Origin']
     except:
-        Origin = "https://discovery-lab.su" #ticket
+        origin = origin_domain
 
     res.headers['Content-Type'] = "application/json"
-    res.headers['Access-Control-Allow-Origin'] = Origin
+    res.headers['Access-Control-Allow-Origin'] = origin
     res.headers['Access-Control-Allow-Credentials'] = 'true'
 
     cookies = []
@@ -115,7 +117,7 @@ def api_correct():
     ))
 
     res.headers['Content-Type'] = "application/json"
-    res.headers['Access-Control-Allow-Origin'] = utils.setup_cors(request, "https://discovery-lab.su") #ticket
+    res.headers['Access-Control-Allow-Origin'] = utils.setup_cors(request, origin_domain)
     res.headers['Access-Control-Allow-Credentials'] = 'true'  
 
     if utils.check_result(request):
@@ -133,7 +135,7 @@ def api_creds():
     ))
 
     res.headers['Content-Type'] = "application/json"
-    res.headers['Access-Control-Allow-Origin'] = "*"    
+    res.headers['Access-Control-Allow-Origin'] = "*"
 
     if utils.check_result(request):
         res.data = json.dumps(
