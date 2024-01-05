@@ -69,19 +69,9 @@ def api_gen():
     res.headers['Access-Control-Allow-Origin'] = origin
     res.headers['Access-Control-Allow-Credentials'] = 'true'
 
-    cookies = []
-    if request.cookies.get('None'):
-        cookies.append(f'None: {request.cookies.get("None")}')
 
-    if request.cookies.get('Lax'):
-        cookies.append(f'Lax: {request.cookies.get("Lax")}')
-
-    if request.cookies.get('Strict'):
-        cookies.append(f'Strict: {request.cookies.get("Strict")}')
-
-    if cookies:
+    if utils.check_result(request):
         logger.info(f"Authentication passed on {request.url}")
-        logger.info(f"Cookies:\n{utils.print_cookies(cookies)}")
 
         res.data = json.dumps(
             {"key": f"SidneyJob{{{utils.gen_random_string(16)}_gen_page}}"}
