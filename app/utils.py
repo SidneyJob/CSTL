@@ -50,6 +50,7 @@ def return_cookie(request):
             )
         return res
 
+
 def setup_cors(request, domain):
     try:
         Origin = dict(request.headers)['Origin']
@@ -79,8 +80,8 @@ def setup_cors(request, domain):
     if get_root(domain) != get_root(Origin):
         return domain
 
-
     return Origin
+
 
 def check_result(request):
     # authorized = 0
@@ -98,13 +99,6 @@ def check_result(request):
     # Логируется строка вида "GET https://localhost:8081/reset_password"
     logger.info(f"{request.method} {request.url}")
 
-    # Предыдущая реализация вывода кук при запросе
-    # logger.info("Cookies:")
-    # for cookie_name, cookie_value in dict(request.cookies).items():
-    #     logger.info(f"    [+] {cookie_name}: {cookie_value}")
-    #     if cookie_name:
-    #         authorized = 1
-    
     # Куки соединяются в единую строку, включая символы переносы строки
     cookies_info = "\n".join([f"[+] {cookie_name}: {cookie_value}"
                               for cookie_name, cookie_value
