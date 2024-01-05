@@ -45,9 +45,9 @@ def return_cookie(request):
         logger.info('Set cookie!')
         return res
     else:
-        res = make_response(render_template(
-            'index.html', cook=dict(request.cookies))
-            )
+        res = make_response(render_template('index.html',
+                                            cook=dict(request.cookies)
+                                            ))
         return res
 
 

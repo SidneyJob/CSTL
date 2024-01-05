@@ -14,7 +14,8 @@ import utils
 
 logger = setup_logger()
 lab_views = Blueprint('lab_views', __name__)
-origin_domain = os.getenv("ORIGIN_DOMAIN")
+attack_domain = os.getenv("ATTACK_DOMAIN")
+interactsh_domain = os.getenv("INTERACTSH_DOMAIN")
 
 
 @lab_views.route('/', methods=['POST', 'GET'])
@@ -24,9 +25,12 @@ def hello():
 
 @lab_views.route('/attack', methods=['POST', 'GET'])
 def attack_route():
-    return make_response(render_template("attack.html",
-                                         cook=dict(request.cookies)
-                                         ))
+    return make_response(
+        render_template("attack.html",
+                        cook=dict(request.cookies),
+                        ATTACK_DOMAIN=attack_domain,
+                        INTERACTSH_DOMAIN=interactsh_domain)
+                        )
 
 
 # Return JavaScript files
@@ -68,7 +72,6 @@ def api_gen():
     res.headers['Content-Type'] = "application/json"
     res.headers['Access-Control-Allow-Origin'] = origin
     res.headers['Access-Control-Allow-Credentials'] = 'true'
-
 
     if utils.check_result(request):
         logger.info(f"Authentication passed on {request.url}")
@@ -117,6 +120,7 @@ def api_correct():
 
         return res
     return res
+
 
 @lab_views.route('/api_wildcard', methods=['POST', 'GET'])
 def api_creds():
