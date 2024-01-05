@@ -109,7 +109,7 @@ function CorsNullReq(url, type, logurl, page){
 
 function StartCORSAttack(url, logurl){
     var types = ["GET", "POST"];
-    var pages = ["api_correct", "api_null", "api_gen", "api_wildcard"]
+    var pages = ["api_correct", "api_null", "api_gen"]
 
     for (let i = 0; i < types.length; i += 1) {
         for (let j = 0; j < pages.length; j += 1) {
