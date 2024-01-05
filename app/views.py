@@ -20,23 +20,11 @@ def hello():
     return utils.return_cookie(request)
 
 
-@lab_views.route('/csrf', methods=['POST', 'GET'])
-def csrf_route():
-    return make_response(render_template("csrf.html",
+@lab_views.route('/attack', methods=['POST', 'GET'])
+def attack_route():
+    return make_response(render_template("attack.html",
                                          cook=dict(request.cookies)
                                          ))
-
-
-@lab_views.route('/cors', methods=['POST', 'GET'])
-def cors_route():
-    return make_response(render_template("cors.html",
-                                         cook=dict(request.cookies)
-                                         ))
-
-
-@lab_views.route('/send', methods=['POST', 'GET'])
-def js_file():
-    return make_response(render_template("vuln_client.html"))
 
 
 # Return JavaScript files
