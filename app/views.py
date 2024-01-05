@@ -46,8 +46,6 @@ def xss2():
 # Page to test CSRF
 @lab_views.route('/reset_password', methods=["GET", "POST"])
 def reset_password():
-    # cookies = []
-
     if utils.check_result(request):
         return "Successfull reset!"
 
@@ -63,7 +61,7 @@ def api_gen():
     try:
         Origin = request.headers['Origin']
     except:
-        Origin = "https://discovery-lab.su"
+        Origin = "https://discovery-lab.su" #ticket
 
     res.headers['Content-Type'] = "application/json"
     res.headers['Access-Control-Allow-Origin'] = Origin
@@ -117,7 +115,7 @@ def api_correct():
     ))
 
     res.headers['Content-Type'] = "application/json"
-    res.headers['Access-Control-Allow-Origin'] = "https://discovery.sidneyjob.ru"
+    res.headers['Access-Control-Allow-Origin'] = utils.setup_cors(request, "https://discovery-lab.su") #ticket
     res.headers['Access-Control-Allow-Credentials'] = 'true'  
 
     if utils.check_result(request):

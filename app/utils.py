@@ -50,6 +50,37 @@ def return_cookie(request):
             )
         return res
 
+def setup_cors(request, domain):
+    try:
+        Origin = dict(request.headers)['Origin']
+    except:
+        return domain
+
+    def get_proto(dom):
+        return dom.split('://')[0]
+
+    def get_port(dom):
+        if len(dom.split(':')) > 2:
+            return dom.split(":")[-1]
+
+    def get_root(dom):
+        del_proto = dom.split('://')[1]
+
+        return [del_proto.split('.')[-1], del_proto.split('.')[-2]]
+
+
+    # Check
+    if get_proto(domain) != get_proto(Origin):
+        return domain
+
+    if get_port(domain) != get_port(Origin):
+        return domain
+
+    if get_root(domain) != get_root(Origin):
+        return domain
+
+
+    return Origin
 
 def check_result(request):
     # authorized = 0
