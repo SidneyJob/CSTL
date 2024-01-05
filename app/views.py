@@ -14,6 +14,7 @@ import utils
 
 logger = setup_logger()
 lab_views = Blueprint('lab_views', __name__)
+cors_domain = os.getenv("CORS_DOMAIN")
 attack_domain = os.getenv("ATTACK_DOMAIN")
 interactsh_domain = os.getenv("INTERACTSH_DOMAIN")
 
@@ -67,7 +68,7 @@ def api_gen():
     try:
         origin = request.headers['Origin']
     except:
-        origin = origin_domain
+        origin = cors_domain
 
     res.headers['Content-Type'] = "application/json"
     res.headers['Access-Control-Allow-Origin'] = origin
@@ -110,7 +111,7 @@ def api_correct():
     ))
 
     res.headers['Content-Type'] = "application/json"
-    res.headers['Access-Control-Allow-Origin'] = utils.setup_cors(request, origin_domain)
+    res.headers['Access-Control-Allow-Origin'] = utils.setup_cors(request, cors_domain)
     res.headers['Access-Control-Allow-Credentials'] = 'true'  
 
     if utils.check_result(request):
