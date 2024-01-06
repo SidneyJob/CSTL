@@ -83,6 +83,7 @@ def setup_cors(request, domain):
         logger.info(f"Incorrect root {get_root(domain)}")
         return domain
 
+    logger.info(f"CORS PASSED!")
     return Origin
 
 
