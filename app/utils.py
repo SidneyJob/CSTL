@@ -72,15 +72,15 @@ def setup_cors(request, domain):
 
     # Check
     if get_proto(domain) != get_proto(Origin):
-        # Uncorrect protocol
+        logger.info(f"Incorrect protocol {get_proto(domain)}")
         return domain
 
     if get_port(domain) != get_port(Origin):
-        # Uncorrct port
+        logger.info(f"Incorrect port {get_port(domain)}")
         return domain
 
     if get_root(domain) != get_root(Origin):
-        # Uncorrect domain
+        logger.info(f"Incorrect root {get_root(domain)}")
         return domain
 
     return Origin
