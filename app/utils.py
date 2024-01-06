@@ -40,7 +40,7 @@ def return_cookie(request):
         res.set_cookie('None', generate_jwt(), samesite="None", secure=True)
         res.set_cookie('Lax', generate_jwt(), samesite="Lax")
         res.set_cookie('Strict', generate_jwt(), samesite="Strict")
-        res.set_cookie('None_SameSite', generate_jwt())
+        res.set_cookie('NULL_SameSite', generate_jwt())
 
         logger.info('Set cookie!')
         return res
