@@ -6,13 +6,10 @@ from flask import (
     Blueprint,
     Response
 )
-from logger import setup_logger
-
 import json
 import os
 import utils
 
-logger = setup_logger()
 lab_views = Blueprint('lab_views', __name__)
 cors_domain = os.getenv("CORS_DOMAIN")
 attack_domain = os.getenv("ATTACK_DOMAIN")
