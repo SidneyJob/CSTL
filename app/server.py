@@ -1,8 +1,12 @@
 from flask import Flask
 from views import lab_views
 from logger import setup_logger, check_decision
+from dotenv import load_dotenv
 import ssl
 import os
+
+load_dotenv()
+logger = setup_logger()
 
 app = Flask(__name__, template_folder='templates')
 app.register_blueprint(lab_views, url_prefix="/", name="lab_views")
@@ -10,7 +14,6 @@ app.register_blueprint(lab_views, url_prefix="/", name="lab_views")
 app.secret_key = os.getenv("SECRET_KEY")
 app.debug = check_decision("FLASK_DEBUG", 'False')
 
-logger = setup_logger()
 
 flask_run_cert = check_decision("FLASK_RUN_CERT", 'False')
 if flask_run_cert:
@@ -22,9 +25,10 @@ else:
 
 # Start server
 if __name__ == "__main__":
-    logger.debug("Server started")
+    logger.warning(f"[+] Server started! {os.getenv('HOST')}:{os.getenv('PORT')}")
+
     app.run(
-        host='0.0.0.0',
-        port=8081,
+        host=os.getenv("HOST"),
+        port=int(os.getenv("PORT")),
         ssl_context=ctx
         )
