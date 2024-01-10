@@ -1,0 +1,30 @@
+<html>
+<script src="main.js" type="text/javascript" ></script>
+<script src="csrf.js" type="text/javascript" ></script>
+<script src="cors.js" type="text/javascript" ></script>
+<head>
+</head>
+<body>
+
+<h1>Exploit creator!</h1>
+    <br><br>
+    
+
+    <a href="/payload">Test your payload</a>
+    
+    <div>
+    <form id="Editor" action="/edit" method="POST" style="max-width: unset">
+        <h3><b>Editor</b></h3>
+
+        <label>Headers:</label><br>
+        <textarea rows="5" cols="70" style="white-space: no-wrap; overflow-x: scroll" name="Headers">{{headers}}</textarea><br><br>
+        
+        <label>Body:</label><br>
+        <textarea rows="15" cols="70" style="white-space: no-wrap; overflow-x: scroll" name="Body">{{body}}</textarea><br>
+
+        <button name="action"value="Store">STORE</button>
+        <button name="action" value="View">View</button>
+    </form>
+</div>
+</body>
+</html>

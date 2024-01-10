@@ -33,6 +33,58 @@ def attack_route():
                         INTERACTSH_DOMAIN=interactsh_domain)
                         )
 
+@lab_views.route('/edit', methods=['POST', 'GET'])
+def edit_route():
+    with open('templates/custom/payload.html','r') as f:
+        body = f.read()
+
+    with open('templates/custom/headers.json','r') as f:
+        headers = f.read()
+
+    res = make_response(render_template("edit.html",
+                                        body=body,
+                                        headers=headers
+                                    ))
+    try:
+            # VIEW
+            if request.form.get('action') == "View":
+                res = make_response("Some",301)
+                res.headers = {"Location":"/payload"}
+            
+            # STORE
+            if request.form.get('action') == "Store":
+                body = request.form.get('Body')
+                headers = request.form.get('Headers')
+
+                with open('templates/custom/payload.html','w') as f:
+                    f.write(f"{body}")
+                
+                with open('templates/custom/headers.json','w') as f:
+                    f.write(f"{headers}")
+                
+                res = make_response(render_template("edit.html",
+                                        body=body,
+                                        headers=headers
+                                ))
+                return res
+                
+    except() as f:
+        pass
+
+    return res
+
+
+@lab_views.route('/payload', methods=['POST', 'GET'])
+def payload_route():
+    with open('templates/custom/headers.json','r') as f:
+        headers_ = f.read()
+
+    res = make_response(render_template("custom/payload.html"))
+    res.headers = json.loads(headers_)
+
+    return res
+
+
 
 # Return JavaScript files
 @lab_views.route('/main.js', methods=['GET'])

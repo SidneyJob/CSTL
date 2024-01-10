@@ -35,14 +35,27 @@ def generate_jwt():
 
 
 def return_cookie(request):
-    if not request.cookies.get('None'):
+    if not request.cookies.get('SameSite-None'):
+        #  Куки:
+        # "SameSite-None"   -> Кука в которой явно указан флаг SameSite со значением None 
+        # "SameSite-Lax"    -> Кука в которой явно указан флаг SameSite со значением Lax
+        # "SameSite-Strict" -> Кука в которой явно указан флаг SameSite со значением Strict
         res = make_response(render_template('index.html'))
-        res.set_cookie('None', generate_jwt(), samesite="None", secure=True)
-        res.set_cookie('Lax', generate_jwt(), samesite="Lax")
-        res.set_cookie('Strict', generate_jwt(), samesite="Strict")
-        res.set_cookie('NULL_SameSite', generate_jwt())
+        
+        # Куки без флага HttpOnly
+        res.set_cookie('SameSite-None', generate_jwt(), samesite="None", secure=True)
+        res.set_cookie('SameSite-Lax', generate_jwt(), samesite="Lax")
+        res.set_cookie('SameSite-Strict', generate_jwt(), samesite="Strict")
+        res.set_cookie('Undefined-SameSite', generate_jwt())
 
-        logger.info('Set cookie!')
+        # Куки с HttpOnly
+        res.set_cookie('HttpOnly-SameSite-None', generate_jwt(), samesite="None", secure=True, httponly = True)
+        res.set_cookie('HttpOnly-SameSite-Lax', generate_jwt(), samesite="Lax", httponly = True)
+        res.set_cookie('HttpOnly-SameSite-Strict', generate_jwt(), samesite="Strict", httponly = True)
+        res.set_cookie('HttpOnly-Undefined-SameSite', generate_jwt(), httponly = True)
+
+
+        logger.warning('[+] Set cookie!')
         return res
     else:
         res = make_response(render_template('index.html',
@@ -72,18 +85,18 @@ def setup_cors(request, domain):
 
     # Check
     if get_proto(domain) != get_proto(Origin):
-        logger.info(f"Incorrect protocol {get_proto(domain)}")
+        logger.warning(f"[-] Incorrect protocol {get_proto(domain)}")
         return domain
 
     if get_port(domain) != get_port(Origin):
-        logger.info(f"Incorrect port {get_port(domain)}")
+        logger.warning(f"[-] Incorrect port {get_port(domain)}")
         return domain
 
     if get_root(domain) != get_root(Origin):
-        logger.info(f"Incorrect root {get_root(domain)}")
+        logger.warning(f"[-] Incorrect root {get_root(domain)}")
         return domain
 
-    logger.info(f"CORS PASSED!")
+    logger.warning(f"[+] CORS PASSED!")
     return Origin
 
 
@@ -101,7 +114,7 @@ def check_result(request):
 
     # СООБЩЕНИЯ ОТ TOKIAKASU
     # Логируется строка вида "GET https://localhost:8081/reset_password"
-    logger.info(f"{request.method} {request.url}")
+    logger.warning(f"{request.method} {request.url}")
 
     # Куки соединяются в единую строку, включая символы переносы строки
     cookies_info = "\n".join([f"[+] {cookie_name}: {cookie_value}"
@@ -110,14 +123,12 @@ def check_result(request):
                               if cookie_name is not None])
 
     # после полученная строка вставляется в лог
-    logger.info(f"Cookies:\n{cookies_info}")
+    logger.warning(f"[+] Cookies:\n{cookies_info}")
 
     # код не трогал, ибо не видел данных с ними
-    logger.info("Data:")
+    logger.warning("[+] Data:")
     for data_name, data_value in data.items():
         logger.info(f"[+] {data_name}: {data_value}")
-
-    logger.info("\nHeaders:")
 
     if cookies_info:
         return True
