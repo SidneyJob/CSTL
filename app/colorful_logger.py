@@ -1,5 +1,8 @@
-import logging
 import os
+import logging
+import colorlog
+
+logger_name = "lab_logger"
 
 
 def check_decision(environment_variable: str, default_value: str) -> bool: 
@@ -18,14 +21,26 @@ def setup_logger():
     else:
         LOG_LEVEL = "INFO"
 
-    # LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO').upper()
-
-    logging.basicConfig(
-        format='%(asctime)s %(module)-10s %(levelname)-8s %(message)s',
+    color_formatter = colorlog.ColoredFormatter(
+        '%(log_color)s%(asctime)s %(levelname)-8s %(module)-10s %(message)s',
         datefmt='%H:%M:%S',
-        level=LOG_LEVEL)
+        log_colors={
+            'DEBUG': 'cyan',
+            'INFO': 'green',
+            'WARNING': 'yellow',
+            'ERROR': 'red',
+            'CRITICAL': 'red,bg_white',
+        },
+    )
 
-    logger = logging.getLogger(__name__)
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(color_formatter)
+
+    logger = logging.getLogger(logger_name)
+    logger.setLevel(LOG_LEVEL)
+    logger.propagate = False
+
+    logger.addHandler(console_handler)
 
     # Disable werkzeug logs to custom logger
     # if env variable LOG_REQUESTS = False

@@ -1,6 +1,6 @@
 from flask import render_template, make_response
 # from colorama import Fore, Style
-from logger import setup_logger
+from colorful_logger import setup_logger
 import random
 import jwt
 import os
