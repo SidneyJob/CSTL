@@ -24,7 +24,7 @@ else:
 
 # Start server
 if __name__ == "__main__":
-    logger.warning(f"Started the server on {os.getenv('HOST')}:{os.getenv('PORT')}")
+    logger.warning(f"Server started on {os.getenv('HOST')}:{os.getenv('PORT')}")
 
     app.run(
         host=os.getenv("HOST"),
