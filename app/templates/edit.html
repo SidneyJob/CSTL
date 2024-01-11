@@ -1,4 +1,7 @@
-<html>
+{% extends "base.html" %}
+
+{% block content %}
+
 <script src="main.js" type="text/javascript" ></script>
 <script src="csrf.js" type="text/javascript" ></script>
 <script src="cors.js" type="text/javascript" ></script>
@@ -26,5 +29,5 @@
         <button name="action" value="View">View</button>
     </form>
 </div>
-</body>
-</html>
+
+{% endblock %}

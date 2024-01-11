@@ -35,7 +35,7 @@ def generate_jwt():
 
 
 def return_cookie(request):
-    if not request.cookies.get('SameSite-None'):
+    if not request.cookies.get('SameSite-Lax'):
         #  Куки:
         # "SameSite-None"   -> Кука в которой явно указан флаг SameSite со значением None 
         # "SameSite-Lax"    -> Кука в которой явно указан флаг SameSite со значением Lax
