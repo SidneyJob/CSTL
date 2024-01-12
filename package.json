@@ -1,0 +1,22 @@
+{
+  "name": "cstl",
+  "version": "1.0.0",
+  "description": "client-side testing lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SidneyJob/CSTL.git"
+  },
+  "author": "SidneyJob & tokiakasu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SidneyJob/CSTL/issues"
+  },
+  "homepage": "https://github.com/SidneyJob/CSTL#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}
