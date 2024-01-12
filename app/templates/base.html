@@ -1,47 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>InfoSec App</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSTL workshop</title>
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     </head>
-    <body>
-        <section class="hero is-primary is-fullheight">
-
-            <div class="hero-head">
-                <nav class="navbar">
-                    <div class="container">
-                        <div class="navbar-end">
-                            <a href="/" class="navbar-item">
-                                Home
-                            </a>
-                            <a href="/scoreboard" class="navbar-item">
-                                Scoreboard
-                            </a>
-
-                            <a href="https://t.me/SidneyJobChannel" class="navbar-item">
-                                SidneyJob
-                            </a>
-
-                            <a href="https://t.me/hackthishit" class="navbar-item">
-                                tokiakasu
-                            </a>
-
-                        </div>
-                    </div>
-                </nav>
+    <body class="bg-primary">
+        <div class="container bg-secondary rounded">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between mt-4" style="height: 9%;">
+            <div class="col mt-1">
+                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none text-white">
+                <h2>CSTL</h2>
+                </a>
             </div>
-
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </div>
-        </section>
+        
+            <ul class="nav col-3 col-md-auto mb-2 text-end mb-md-0">
+                <li><a href="https://t.me/SidneyJob" class="nav-link px-2 text-white">SidneyJob</a></li>
+                <li><a href="https://t.me/hackthishit" class="nav-link px-2 text-white">tokiakasu</a></li>
+            </ul>
+        
+            <!-- <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-outline-primary me-2">login</button>
+                <button type="button" class="btn btn-primary">sign-up</button>
+            </div> -->
+            </header>
+        </div>
+        {% block content %}
+        {% endblock %}
     </body>
 </html>

@@ -1,0 +1,20 @@
+// Override primary and secondary bootstrap colors
+$primary: #1c1e29;
+$secondary: #33354b;
+
+// For text inside code blocks
+$code-color: #d63384;
+
+// import bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+pre {
+  border: 1px solid $secondary;
+  border-radius: 5px;
+  // padding: 10px;
+  overflow: auto; /* Add this property to enable horizontal scrolling if needed */
+}
+
+pre code {
+  color: $code-color;
+}

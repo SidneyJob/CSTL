@@ -1,24 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript" ></script>
-<script src="{{ url_for('static', filename='js/csrf.js') }}" type="text/javascript" ></script>
-<script src="{{ url_for('static', filename='js/cors.js') }}" type="text/javascript" ></script>
-
-<h1>Hello!</h1>
-<h2>Cookies</h2>
-
-<ul class="list2a">
+    <div class="container mt-4 p-1 text-start text-white">
+        <div class="row">
+            <h1>Client-Side Testing Lab</h1>
+            <div class="col-6 ms-4 mt-3">
+                <ul>
+                    <li>Actual lab for testing <b>yours</b> CORS PoC.</li>
+                    <li>Made by SidneyJob and tokiakasu for our <a class="link-info link-offset-2 text-decoration-none" href="https://xakep.ru">research.</a></li>
+                    <li>blah blah <code>1337</code> blah <code>elite blah blah</code>.</li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <div class="col-lg-6 col-xxl-6 mx-auto">
+                    <div class="d-grid gap-2 justify-content-end">
+                        <a class="btn btn-outline-light" href="/attack" rel="noopener noreferrer" role="button">CORS testing</a>
+                        <a class="btn btn-outline-danger" href="/edit">Custom exploit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container outline-light">
+        <div class="row mt-4 mb-2 text-white">
+            <h3>Current cookies</h3>
+        </div>
+        <div class="row code-block">
+            <pre>
+<code>
 {% for i in cook %}
-    <li>{{i}}: {{cook[i]}}</li>
-{% endfor %}
+    {{i}}: {{cook[i]}}
+{%- endfor %}
+</code>
+            </pre>
+        </div>
+    </div>
 
-</ul>
-
-
-<a href="/attack">Test default attacks</a>
-<a href="/edit">Create your own payload</a>
-
-    
 {% endblock %}
