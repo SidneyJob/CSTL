@@ -110,6 +110,9 @@ function CorsNullReq(url, type, logurl, page){
 
 
 function CreateCommonDiv(methods, pages){
+    var DivMain = document.createElement("div");
+    DivMain.setAttribute("id", "AllForms")
+
     for (let i = 0; i < methods.length; i += 1) {
         var div = document.createElement("div");
         div.setAttribute("id", methods[i]+"Forms")
@@ -120,9 +123,10 @@ function CreateCommonDiv(methods, pages){
             div.appendChild(form);
             div.appendChild(iframe);
         }
+        DivMain.appendChild(div)
         
-        document.getElementsByTagName("body")[0].appendChild(div);
     }
+    document.getElementsByTagName("body")[0].appendChild(DivMain);
 }
 
 function StartCORSAttack(url, logurl){
