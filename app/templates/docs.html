@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="container mt-4 p-1 text-start text-white">
+    <div class="row">
+        <h1>Documentation</h1>
+    </div><br><br>
+
+
+    <div class="row">
+        <h2>Enviroment Settings</h2>
+    </div>
+
+    <code>HOST</code>: Определяет из какой сети будет доступа лаборатория <br>
+    <code>PORT</code>: Определяет на каком порту будет работать лаборатория <br>
+    <code>SECRET_KEY</code>: Определяет секретный ключ для подписи JWT токенов <br>
+    <code>ATTACK_DOMAIN</code>: Определяет на какой домен будут идти запросы со страниц /cors_testing и /csrf_testing <br>
+    <code>INTERACTSH_DOMAIN</code>: Определяет куда будет отправляться ответ от сервера при эксплуатации CORS мисконфигов <br>
+    <code>CORS_DOMAIN</code>: Нужен для правильной настроки CORS. CORS настроен разрешать чтение в рамках сессии пользователя со всех поддоменов <br>
+    <code>FLASK_DEBUG</code>: Определяет стандартную опцию `debug` во Flask <br>
+    <code>FLASK_RUN_CERT</code>: Определяет будет ли использоваться SSL <br>
+    <code>LOG_REQUESTS</code>: Определяет будут ли логироваться запросы <br>
+    <br><br>
+
+    
+    <div class="row">
+        <h2>Types of cookies</h2>
+    </div>
+
+    1) <code>SameSite-None</code>: <code>SameSite=None</code>, <code>HttpOnly=False</code>, <code>Secure=True</code> <br>
+    2) <code>SameSite-Lax</code>: <code>SameSite=Lax</code>, <code>HttpOnly=False</code>, <code>Secure=False</code> <br>
+    3) <code>SameSite-Strict</code>: <code>SameSite=Strict</code>, <code>HttpOnly=False</code>, <code>Secure=False</code> <br>
+    4) <code>Undefined-SameSite</code>: <code>SameSite=[undefined]</code>, <code>HttpOnly=False</code>, <code>Secure=False</code> <br>
+
+    <br>
+
+    5) <code>HttpOnly-SameSite-None</code>: <code>SameSite=None</code>, <code>HttpOnly=True</code>, <code>Secure=True</code> <br>
+    6) <code>HttpOnly-SameSite-Lax</code>: <code>SameSite=None</code>, <code>HttpOnly=True</code>, <code>Secure=False</code> <br>
+    7) <code>HttpOnly-SameSite-Strict</code>: <code>SameSite=None</code>, <code>HttpOnly=True</code>, <code>Secure=False</code> <br>
+    8) <code>HttpOnly-Undefined-SameSite</code>: <code>SameSite=[undefined]</code>, <code>HttpOnly=True</code>, <code>Secure=False</code> <br>
+    <br><br>
+
+
+    <div class="row">
+        <h2>A little about CORS and CSRF testing pages</h2>
+    </div>
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -11,6 +11,8 @@ import os
 import utils
 
 lab_views = Blueprint('lab_views', __name__)
+
+cors_pages = os.getenv("CORS_PAGES")
 cors_domain = os.getenv("CORS_DOMAIN")
 attack_domain = os.getenv("ATTACK_DOMAIN")
 interactsh_domain = os.getenv("INTERACTSH_DOMAIN")
@@ -20,12 +22,25 @@ interactsh_domain = os.getenv("INTERACTSH_DOMAIN")
 def hello():
     return utils.return_cookie(request)
 
-
-@lab_views.route('/attack', methods=['POST', 'GET'])
-def attack_route():
+@lab_views.route('/docs', methods=['POST', 'GET'])
+def docs():
     return make_response(
-        render_template("attack.html",
-                        cook=dict(request.cookies),
+        render_template("docs.html")
+                )
+
+@lab_views.route('/cors_testing', methods=['POST', 'GET'])
+def cors_attack_route():
+    return make_response(
+        render_template("cors.html",
+                        ATTACK_DOMAIN=attack_domain,
+                        INTERACTSH_DOMAIN=interactsh_domain,
+                        CORS_PAGES=cors_pages)
+                        )
+
+@lab_views.route('/csrf_testing', methods=['POST', 'GET'])
+def csrf_attack_route():
+    return make_response(
+        render_template("csrf.html",
                         ATTACK_DOMAIN=attack_domain,
                         INTERACTSH_DOMAIN=interactsh_domain)
                         )
@@ -80,23 +95,6 @@ def payload_route():
     res.headers = json.loads(headers_)
 
     return res
-
-
-
-# Return JavaScript files
-@lab_views.route('/main.js', methods=['GET'])
-def xss():
-    return send_file('./js/main.js', download_name='xss.js')
-
-
-@lab_views.route('/csrf.js', methods=['GET'])
-def xss1():
-    return send_file('./js/csrf.js', download_name='xss.js')
-
-
-@lab_views.route('/cors.js', methods=['GET'])
-def xss2():
-    return send_file('./js/cors.js', download_name='xss.js')
 
 
 # Page to test CSRF

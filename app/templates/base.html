@@ -5,8 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CSTL workshop</title>
+        
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+
+        <script src="{{ url_for('static', filename='js/csrf.js') }}" type="text/javascript" ></script>
+        <script src="{{ url_for('static', filename='js/cors.js') }}" type="text/javascript" ></script>
     </head>
     <body class="bg-primary">
         <div class="container bg-secondary rounded">
@@ -22,7 +26,7 @@
             <ul class="nav col-3 col-md-auto mb-2 text-start mb-md-0">
                 <li><a href="/docs" class="nav-link px-2 link-header">Docs</a></li>
                 <li class="nav-link px-2 delimeter">|</li>
-                <li><a href="/attack" class="nav-link px-2 link-header">CORS testing</a></li>
+                <li><a href="/cors_testing" class="nav-link px-2 link-header">CORS testing</a></li>
                 <li class="nav-link px-2 delimeter">|</li>
                 <li><a href="/edit" class="nav-link px-2 link-header">Exploit creator</a></li>
             </ul>
