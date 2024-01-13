@@ -4,19 +4,21 @@
 <div class="container mt-4 p-1 text-start text-white">
     <div class="row">
         <h1>Exploit creator</h1>
-        <div class="col-6 ms-4 mt-3">
+
+        <div class="col-md-6 ms-md-4 mt-3">
             <ul>
                 <li>Actual lab for testing <b>yours</b> CORS PoC.</li>
                 <li>Made by SidneyJob and tokiakasu for our <a class="link-info link-offset-2 text-decoration-none" href="https://xakep.ru">research.</a></li>
                 <li>blah blah <code>1337</code> blah <code>elite blah blah</code>.</li>
             </ul>
         </div>
-        <div class="container mx-2 mt-2">
+
+        <div class="row mt-2">
             <form id="Editor" action="/edit" method="POST">
                 <div class="form-group row">
                     <h3><b>Editor</b></h3>
 
-                    <div class="col-6 mt-2"> 
+                    <div class="col-7 mt-2"> 
                         <div class="d-grid gap-2">
                             <div class="d-grid gap-2 mb-3">
                                 <label for="headers-text">Server headers</label>
@@ -40,4 +42,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

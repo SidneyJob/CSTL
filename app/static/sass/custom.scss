@@ -14,6 +14,19 @@ $form-check-input-checked-bg-color: $code-color;
   color: $primary;
 }
 
+svg path {
+  fill: white;
+}
+
+svg text {
+  fill: white;
+}
+
+svg:hover text,
+svg:hover path {
+  fill: $code-color;
+}
+
 // coloured links in navbar
 .link-header, .link-header:focus {
   color: white;
