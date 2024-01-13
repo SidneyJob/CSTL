@@ -3,62 +3,156 @@
 {% block content %}
 
 
+<!-- <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+        <ul>
+            <li><a href="#quick-start" class="">Quick start</a></li>
+            <li><a href="#cdn-links">CDN links</a></li>
+            <li><a href="#next-steps">Next steps</a></li>
+            <li><a href="#js-components">JS components</a></li>
+            <li><a href="#important-globals">Important globals</a>
+            <ul>
+                <li><a href="#html5-doctype">HTML5 doctype</a></li>
+                <li><a href="#viewport-meta">Viewport meta</a></li>
+                <li><a href="#box-sizing">Box-sizing</a></li>
+                <li><a href="#reboot">Reboot</a></li>
+            </ul>
+            </li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+</div> -->
 
 <div class="container mt-4 p-1 text-start text-white">
-    <div class="row">
-        <h1>Documentation</h1>
-    </div><br><br>
+    <div class="row justify-content-center">
+    <div class="col-8 d-grid">
 
+            <div class="row mb-3">
+                <h1>Get started with CSTL</h1>
+                <p class="bd-lead">This lab is designed to test hypothetical client-side attacks, particularly in misconfiguration of <abbr title="Cross-Origin Resource Sharing">CORS</abbr>.</p>
+                <p class="bd-lead">If you don't understand what we are talking about, read our <a class="link-info link-offset-2 text-decoration-none" href="https://xakep.ru">research.</a></p>
+            </div>
 
-    <div class="row">
-        <h2>Enviroment Settings</h2>
+            <div class="row">
+                <h2>CORS testing</h2>
+                <p>blah blah blah</p>
+            </div>
+
+            <div class="row">
+                <h2>Environment variables</h2>
+                <table class="table ms-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">Variable</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>HOST</code></td>
+                            <td>Определяет из какой сети будет доступа лаборатория</td>
+                        </tr>
+                        <tr>
+                            <td><code>PORT</code></td>
+                            <td>Определяет на каком порту будет работать лаборатория</td>
+                        </tr>
+                        <tr>
+                            <td><code>SECRET_KEY</code></td>
+                            <td>Определяет секретный ключ для подписи JWT токенов</td>
+                        </tr>
+                        <tr>
+                            <td><code>ATTACK_DOMAIN</code></td>
+                            <td>Определяет на какой домен будут идти запросы со страниц /cors_testing и /csrf_testing</td>
+                        </tr>
+                        <tr>
+                            <td><code>INTERACTSH_DOMAIN</code></td>
+                            <td>Определяет куда будет отправляться ответ от сервера при эксплуатации CORS мисконфигов</td>
+                        </tr>
+                        <tr>
+                            <td><code>CORS_DOMAIN</code></td>
+                            <td>Нужен для правильной настроки CORS. CORS настроен разрешать чтение в рамках сессии пользователя со всех поддоменов</td>
+                        </tr>
+                        <tr>
+                            <td><code>FLASK_DEBUG</code></td>
+                            <td>Определяет стандартную опцию `debug` во Flask</td>
+                        </tr>
+                        <tr>
+                            <td><code>FLASK_RUN_CERT</code></td>
+                            <td>Определяет будет ли использоваться SSL</td>
+                        </tr>
+                        <tr>
+                            <td><code>LOG_REQUESTS</code></td>
+                            <td>Определяет будут ли логироваться запросы</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row mt-5">
+                <h2>Cookie types</h2>
+                <table class="table ms-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">SameSite</th>
+                            <th scope="col">HttpOnly</th>
+                            <th scope="col">Secure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>SameSite-None</code></td>
+                            <td>None</td>
+                            <td>False</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <td><code>SameSite-Lax</code></td>
+                            <td>Lax</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <td><code>SameSite-Strict</code></td>
+                            <td>Strict</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <td><code>Undefined-SameSite</code></td>
+                            <td>[undefined]</td>
+                            <td>False</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <td><code>HttpOnly-SameSite-None</code></td>
+                            <td>None</td>
+                            <td>True</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <td><code>HttpOnly-SameSite-Lax</code></td>
+                            <td>None</td>
+                            <td>True</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <td><code>HttpOnly-SameSite-Strict</code></td>
+                            <td>None</td>
+                            <td>True</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <td><code>HttpOnly-Undefined-SameSite</code></td>
+                            <td>[undefined]</td>
+                            <td>True</td>
+                            <td>False</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
     </div>
-
-    <code>HOST</code>: Определяет из какой сети будет доступа лаборатория <br>
-    <code>PORT</code>: Определяет на каком порту будет работать лаборатория <br>
-    <code>SECRET_KEY</code>: Определяет секретный ключ для подписи JWT токенов <br>
-    <code>ATTACK_DOMAIN</code>: Определяет на какой домен будут идти запросы со страниц /cors_testing и /csrf_testing <br>
-    <code>INTERACTSH_DOMAIN</code>: Определяет куда будет отправляться ответ от сервера при эксплуатации CORS мисконфигов <br>
-    <code>CORS_DOMAIN</code>: Нужен для правильной настроки CORS. CORS настроен разрешать чтение в рамках сессии пользователя со всех поддоменов <br>
-    <code>FLASK_DEBUG</code>: Определяет стандартную опцию `debug` во Flask <br>
-    <code>FLASK_RUN_CERT</code>: Определяет будет ли использоваться SSL <br>
-    <code>LOG_REQUESTS</code>: Определяет будут ли логироваться запросы <br>
-    <br><br>
-
-    
-    <div class="row">
-        <h2>Types of cookies</h2>
-    </div>
-
-    1) <code>SameSite-None</code>: <code>SameSite=None</code>, <code>HttpOnly=False</code>, <code>Secure=True</code> <br>
-    2) <code>SameSite-Lax</code>: <code>SameSite=Lax</code>, <code>HttpOnly=False</code>, <code>Secure=False</code> <br>
-    3) <code>SameSite-Strict</code>: <code>SameSite=Strict</code>, <code>HttpOnly=False</code>, <code>Secure=False</code> <br>
-    4) <code>Undefined-SameSite</code>: <code>SameSite=[undefined]</code>, <code>HttpOnly=False</code>, <code>Secure=False</code> <br>
-
-    <br>
-
-    5) <code>HttpOnly-SameSite-None</code>: <code>SameSite=None</code>, <code>HttpOnly=True</code>, <code>Secure=True</code> <br>
-    6) <code>HttpOnly-SameSite-Lax</code>: <code>SameSite=None</code>, <code>HttpOnly=True</code>, <code>Secure=False</code> <br>
-    7) <code>HttpOnly-SameSite-Strict</code>: <code>SameSite=None</code>, <code>HttpOnly=True</code>, <code>Secure=False</code> <br>
-    8) <code>HttpOnly-Undefined-SameSite</code>: <code>SameSite=[undefined]</code>, <code>HttpOnly=True</code>, <code>Secure=False</code> <br>
-    <br><br>
-
-
-    <div class="row">
-        <h2>A little about CORS and CSRF testing pages</h2>
-    </div>
-
-    
 </div>
-
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
