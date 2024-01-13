@@ -11855,7 +11855,19 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-pre {
+.delimeter {
+  color: #1c1e29;
+}
+
+.link-header, .link-header:focus {
+  color: white;
+}
+
+.link-header:hover {
+  color: #d63384;
+}
+
+pre.cookies {
   border: 1px solid #33354b;
   border-radius: 5px;
   overflow: auto; /* Add this property to enable horizontal scrolling if needed */
@@ -11863,6 +11875,12 @@ pre {
 
 pre code {
   color: #d63384;
+}
+
+form textarea {
+  white-space: no-wrap;
+  overflow-x: scroll;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=custom.css.map */
