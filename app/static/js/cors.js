@@ -139,11 +139,10 @@ function CreateCommonDiv(methods, pages){
     document.getElementsByTagName("body")[0].appendChild(DivMain);
 }
 
-function StartCORSAttack(url, logurl){
+function StartCORSAttack(url, logurl, pages){
     var methods = ["GET", "POST"];
-    var pages = ["api_correct", "api_null", "api_gen"]
-    
-    
+    pages = pages.split(',');
+
     for (let i = 0; i < methods.length; i += 1) {
         for (let j = 0; j < pages.length; j += 1) {
             if(CreateCORSForm(url, methods[i], logurl, pages[j])){

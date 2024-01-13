@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br><br>
+
+<div class="row mb-4 ms-4 text-white">
+    <h2>API endpoints for CORS testing</h2>
+    <script> 
+    //console.log({{CORS_PAGES}});
+
+    
+    StartCORSAttack("{{ ATTACK_DOMAIN }}", "{{ INTERACTSH_DOMAIN }}", "{{CORS_PAGES}}");
+
+    </script>
+</div>
+
+{% endblock %}
