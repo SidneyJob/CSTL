@@ -1,9 +1,10 @@
-// Override primary and secondary bootstrap colors
+// color of text inside code blocks
+$code-color: #d63384;
+
+// Override default bootstrap colors
 $primary: #1c1e29;
 $secondary: #33354b;
-
-// For text inside code blocks
-$code-color: #d63384;
+$form-check-input-checked-bg-color: $code-color;
 
 // import bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap';
@@ -43,4 +44,14 @@ form textarea {
   overflow-x: scroll;
   border-radius: 5px;
 
+}
+
+// labels for checkboxes in /attack page
+#AllForms {
+  color: white;
+}
+
+// iframes in /attack page
+#checkbox-iframe {
+  background: whitesmoke;
 }

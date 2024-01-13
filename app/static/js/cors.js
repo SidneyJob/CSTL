@@ -13,9 +13,12 @@ function CreateCORSForm(url, type, logurl, page){
 
     var input = document.createElement("input");
     input.setAttribute("id", type+page+'Button');
+    input.setAttribute("class", "form-check-input")
     input.setAttribute("type", "checkbox");
 
     var label = document.createElement("label");
+    label.setAttribute("class", "form-check-label")
+    label.setAttribute("for", type+page+'Button')
     label.innerHTML = "Send " + type + " request to " + page
 
     div.appendChild(input);
@@ -63,7 +66,7 @@ function CorsNullReq(url, type, logurl, page){
         console.log(url);
         var elem = document.querySelector('#'+type+page+'ButtonNullP');
         elem.innerHTML = `
-            <iframe sandbox="allow-scripts allow-top-navigation allow-forms" src="data:text/html,<script>
+            <iframe class="mt-2" style="background: #F5F5F5;" sandbox="allow-scripts allow-top-navigation allow-forms" src="data:text/html,<script>
             var req = new XMLHttpRequest();
             req.onload = reqListener;
             req.open('${type}','${url}',true);
@@ -84,9 +87,12 @@ function CorsNullReq(url, type, logurl, page){
 
     var input = document.createElement("input");
     input.setAttribute("id", type+page+'ButtonNull');
+    input.setAttribute("class", "form-check-input")
     input.setAttribute("type", "checkbox");
 
     var label = document.createElement("label");
+    label.setAttribute("class", "form-check-label")
+    label.setAttribute("for", type+page+'ButtonNull')
     label.innerHTML = "Send " + type + " request to " + page + "[NULL]"
 
     var p = document.createElement("p")
@@ -112,6 +118,7 @@ function CorsNullReq(url, type, logurl, page){
 function CreateCommonDiv(methods, pages){
     var DivMain = document.createElement("div");
     DivMain.setAttribute("id", "AllForms")
+    DivMain.setAttribute("class", "form-check ms-5 ps-5")
 
     for (let i = 0; i < methods.length; i += 1) {
         var div = document.createElement("div");
