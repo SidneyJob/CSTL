@@ -11859,6 +11859,19 @@ textarea.form-control-lg {
   color: #1c1e29;
 }
 
+svg path {
+  fill: white;
+}
+
+svg text {
+  fill: white;
+}
+
+svg:hover text,
+svg:hover path {
+  fill: #d63384;
+}
+
 .link-header, .link-header:focus {
   color: white;
 }
