@@ -6,24 +6,27 @@
 <script src="{{ url_for('static', filename='js/csrf.js') }}" type="text/javascript" ></script>
 <script src="{{ url_for('static', filename='js/cors.js') }}" type="text/javascript" ></script>
 
-    <div class="container outline-light">
-        <div class="row mt-4 mb-2 text-white">
-            <h1>Current cookies</h1>
-        </div>
-        <div class="row code-block">
-            <pre class="cookies">
+<div class="container outline-light">
+    <div class="row mt-4 mb-2 text-white">
+        <h1>Current cookies</h1>
+    </div>
+
+    <div class="row code-block">
+        <pre class="cookies">
 <code>
 {% for i in cook %}
     {{i}}: {{cook[i]}}
 {%- endfor %}
 </code>
-            </pre>
-        </div>
+        </pre>
     </div>
+</div>
 
 <br><br>
 
-
-<script> main("{{ ATTACK_DOMAIN }}", "{{ INTERACTSH_DOMAIN }}"); </script>
+<div class="row mb-4 ms-4 text-white">
+    <h2>API endpoints for CORS testing</h2>
+    <script> main("{{ ATTACK_DOMAIN }}", "{{ INTERACTSH_DOMAIN }}"); </script>
+</div>
 
 {% endblock %}
