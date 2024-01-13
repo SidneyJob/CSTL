@@ -118,11 +118,13 @@ function CorsNullReq(url, type, logurl, page){
 function CreateCommonDiv(methods, pages){
     var DivMain = document.createElement("div");
     DivMain.setAttribute("id", "AllForms")
-    DivMain.setAttribute("class", "form-check ms-5 ps-5")
+    DivMain.setAttribute("class", "form-check")
 
     for (let i = 0; i < methods.length; i += 1) {
         var div = document.createElement("div");
+        var br = document.createElement("br");
         div.setAttribute("id", methods[i]+"Forms")
+        div.setAttribute("class", "col-8 ms-5 ps-5 pt-3 border rounded")
 
         for (let j = 0; j < pages.length; j += 1) {
             form = document.getElementById("P_"+methods[i]+pages[j]);
@@ -131,6 +133,7 @@ function CreateCommonDiv(methods, pages){
             div.appendChild(iframe);
         }
         DivMain.appendChild(div)
+        DivMain.appendChild(br)
         
     }
     document.getElementsByTagName("body")[0].appendChild(DivMain);
