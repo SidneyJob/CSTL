@@ -8,22 +8,39 @@ $code-color: #d63384;
 // import bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
-pre {
+// delimeter in navbar 
+.delimeter {
+  color: $primary;
+}
+
+// coloured links in navbar
+.link-header, .link-header:focus {
+  color: white;
+}
+
+.link-header:hover {
+  color: $code-color;
+}
+
+// for cookie loop
+pre.cookies {
   border: 1px solid $secondary;
   border-radius: 5px;
   // padding: 10px;
   overflow: auto; /* Add this property to enable horizontal scrolling if needed */
 }
-form {
-  border: 1px solid $secondary;
+
+pre code {
+  color: $code-color;
 }
+
+// form {
+//   border: 1px solid $secondary;
+// }
+
 form textarea {
   white-space: no-wrap;
   overflow-x: scroll;
   border-radius: 5px;
 
-}
-
-pre code {
-  color: $code-color;
 }
