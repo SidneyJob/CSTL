@@ -31,7 +31,7 @@ def docs():
 @lab_views.route('/cors_testing', methods=['POST', 'GET'])
 def cors_attack_route():
     return make_response(
-        render_template("cors.html",
+        render_template("attack/cors.html",
                         ATTACK_DOMAIN=attack_domain,
                         INTERACTSH_DOMAIN=interactsh_domain,
                         CORS_PAGES=cors_pages)
@@ -40,7 +40,7 @@ def cors_attack_route():
 @lab_views.route('/csrf_testing', methods=['POST', 'GET'])
 def csrf_attack_route():
     return make_response(
-        render_template("csrf.html",
+        render_template("attack/csrf.html",
                         ATTACK_DOMAIN=attack_domain,
                         INTERACTSH_DOMAIN=interactsh_domain)
                         )
@@ -64,7 +64,7 @@ def edit_route():
                 res.headers = {"Location":"/payload"}
             
             # STORE
-            if request.form.get('action') == "Store":
+            if request.form.get('action') == "Save":
                 body = request.form.get('Body')
                 headers = request.form.get('Headers')
 
