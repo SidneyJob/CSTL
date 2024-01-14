@@ -34,9 +34,18 @@
             </div>
 
             <div class="row">
-                <h2>CORS testing</h2>
-                <p>blah blah blah</p>
+                <h2>How to use CORS testing page</h2>
+                <p>1. Configure endpoints in <code>.env</code> file</p>
+                <p>2. Go to CORS testing page</p>
+                <p>3. Send a request!</p>
             </div>
+            
+            <div class="row">
+                <h2>How to use Exploit creator</h2>
+                <p>1. Customize the response headers and page body</p>
+                <p>2. Save your exploit</p>
+                <p>3. View page with your exploit!</p>
+            </div>           
 
             <div class="row">
                 <h2>Environment variables</h2>
@@ -50,39 +59,39 @@
                     <tbody>
                         <tr>
                             <td><code>HOST</code></td>
-                            <td>Определяет из какой сети будет доступа лаборатория</td>
+                            <td>Defines from which network the laboratory will be accessed</td>
                         </tr>
                         <tr>
                             <td><code>PORT</code></td>
-                            <td>Определяет на каком порту будет работать лаборатория</td>
+                            <td>Defines on which port the laboratory will operate</td>
                         </tr>
                         <tr>
                             <td><code>SECRET_KEY</code></td>
-                            <td>Определяет секретный ключ для подписи JWT токенов</td>
+                            <td>Defines the secret key for signing JWT tokens</td>
                         </tr>
                         <tr>
                             <td><code>ATTACK_DOMAIN</code></td>
-                            <td>Определяет на какой домен будут идти запросы со страниц /cors_testing и /csrf_testing</td>
+                            <td>Defines which domain requests will go to from the /cors_testing and /csrf_testing pages</td>
                         </tr>
                         <tr>
                             <td><code>INTERACTSH_DOMAIN</code></td>
-                            <td>Определяет куда будет отправляться ответ от сервера при эксплуатации CORS мисконфигов</td>
+                            <td>Defines where the response from the server will be sent when using CORS misconfigs</td>
                         </tr>
                         <tr>
                             <td><code>CORS_DOMAIN</code></td>
-                            <td>Нужен для правильной настроки CORS. CORS настроен разрешать чтение в рамках сессии пользователя со всех поддоменов</td>
+                            <td>Needed to properly configure CORS. CORS is configured to allow reading within a user session from all subdomains</td>
                         </tr>
                         <tr>
                             <td><code>FLASK_DEBUG</code></td>
-                            <td>Определяет стандартную опцию `debug` во Flask</td>
+                            <td>Defines the standard `debug` option in Flask</td>
                         </tr>
                         <tr>
                             <td><code>FLASK_RUN_CERT</code></td>
-                            <td>Определяет будет ли использоваться SSL</td>
+                            <td>Defines whether SSL will be used</td>
                         </tr>
                         <tr>
                             <td><code>LOG_REQUESTS</code></td>
-                            <td>Определяет будут ли логироваться запросы</td>
+                            <td>Defines whether requests will be logged</td>
                         </tr>
                     </tbody>
                 </table>
@@ -152,6 +161,9 @@
                 </table>
 
             </div>
+
+
+
         </div>
     </div>
 </div>
