@@ -22,11 +22,20 @@ interactsh_domain = os.getenv("INTERACTSH_DOMAIN")
 def hello():
     return utils.return_cookie(request)
 
+
 @lab_views.route('/docs', methods=['POST', 'GET'])
 def docs():
     return make_response(
         render_template("docs.html")
                 )
+
+
+@lab_views.route('/docs/env', methods=['POST', 'GET'])
+def docs_env():
+    return make_response(
+        render_template("docs/env.html")
+    )
+
 
 @lab_views.route('/cors_testing', methods=['POST', 'GET'])
 def cors_attack_route():

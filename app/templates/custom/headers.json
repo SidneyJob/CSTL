@@ -1,4 +1,4 @@
 {
-"1": "12",
-"2":"33"
+"header1": "header value",
+"header2":"yet another header value"
 }

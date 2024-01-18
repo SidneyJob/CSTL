@@ -25,12 +25,19 @@
 
 <div class="container mt-4 p-1 text-start text-white">
     <div class="row justify-content-center">
-    <div class="col-8 d-grid">
+    <div class="col-6 d-grid">
 
             <div class="row mb-3">
-                <h1>Get started with CSTL</h1>
-                <p class="bd-lead">This lab is designed to test hypothetical client-side attacks, particularly in misconfiguration of <abbr title="Cross-Origin Resource Sharing">CORS</abbr>.</p>
-                <p class="bd-lead">If you don't understand what we are talking about, read our <a class="link-info link-offset-2 text-decoration-none" href="https://xakep.ru">research.</a></p>
+                <h1>Начало работы с CSTL</h1>
+                <p class="bd-lead">СSTL - лаба для тестирования гипотетических клиентских атак, в частности при мисконфигурации <abbr title="Cross-Origin Resource Sharing">CORS</abbr>. Подробнее читай в <a class="link-info link-offset-2 text-decoration-none" href="https://xakep.ru">нашем ресерче.</a></p>
+            </div>
+
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">В чём суть страницы CORS testing?</a>
+
+                <a href="#" class="list-group-item list-group-item-action">Как пользоваться Exploit creator?</a>
+                <a href="#" class="list-group-item list-group-item-action">Какие типы кук в лабе и зачем нужны?</a>
+                <a href="/docs/env" class="list-group-item list-group-item-action">Переменные окружения лабы</a>
             </div>
 
             <div class="row">
@@ -47,115 +54,65 @@
                 <p>3. View page with your exploit!</p>
             </div>           
 
-            <div class="row">
-                <h2>Environment variables</h2>
-                <table class="table ms-2">
-                    <thead>
-                        <tr>
-                            <th scope="col">Variable</th>
-                            <th scope="col">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>HOST</code></td>
-                            <td>Defines from which network the laboratory will be accessed</td>
-                        </tr>
-                        <tr>
-                            <td><code>PORT</code></td>
-                            <td>Defines on which port the laboratory will operate</td>
-                        </tr>
-                        <tr>
-                            <td><code>SECRET_KEY</code></td>
-                            <td>Defines the secret key for signing JWT tokens</td>
-                        </tr>
-                        <tr>
-                            <td><code>ATTACK_DOMAIN</code></td>
-                            <td>Defines which domain requests will go to from the /cors_testing and /csrf_testing pages</td>
-                        </tr>
-                        <tr>
-                            <td><code>INTERACTSH_DOMAIN</code></td>
-                            <td>Defines where the response from the server will be sent when using CORS misconfigs</td>
-                        </tr>
-                        <tr>
-                            <td><code>CORS_DOMAIN</code></td>
-                            <td>Needed to properly configure CORS. CORS is configured to allow reading within a user session from all subdomains</td>
-                        </tr>
-                        <tr>
-                            <td><code>FLASK_DEBUG</code></td>
-                            <td>Defines the standard `debug` option in Flask</td>
-                        </tr>
-                        <tr>
-                            <td><code>FLASK_RUN_CERT</code></td>
-                            <td>Defines whether SSL will be used</td>
-                        </tr>
-                        <tr>
-                            <td><code>LOG_REQUESTS</code></td>
-                            <td>Defines whether requests will be logged</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
             <div class="row mt-5">
                 <h2>Cookie types</h2>
                 <table class="table ms-2">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">SameSite</th>
-                            <th scope="col">HttpOnly</th>
-                            <th scope="col">Secure</th>
+                            <th scope="col" class="text-white">Name</th>
+                            <th scope="col" class="text-white">SameSite</th>
+                            <th scope="col" class="text-white">HttpOnly</th>
+                            <th scope="col" class="text-white">Secure</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><code>SameSite-None</code></td>
-                            <td>None</td>
-                            <td>False</td>
-                            <td>True</td>
+                            <td class="text-white">None</td>
+                            <td class="text-white">False</td>
+                            <td class="text-white">True</td>
                         </tr>
                         <tr>
                             <td><code>SameSite-Lax</code></td>
-                            <td>Lax</td>
-                            <td>False</td>
-                            <td>False</td>
+                            <td class="text-white">Lax</td>
+                            <td class="text-white">False</td>
+                            <td class="text-white">False</td>
                         </tr>
                         <tr>
                             <td><code>SameSite-Strict</code></td>
-                            <td>Strict</td>
-                            <td>False</td>
-                            <td>False</td>
+                            <td class="text-white">Strict</td>
+                            <td class="text-white">False</td>
+                            <td class="text-white">False</td>
                         </tr>
                         <tr>
                             <td><code>Undefined-SameSite</code></td>
-                            <td>[undefined]</td>
-                            <td>False</td>
-                            <td>False</td>
+                            <td class="text-white">[undefined]</td>
+                            <td class="text-white">False</td>
+                            <td class="text-white">False</td>
                         </tr>
                         <tr>
                             <td><code>HttpOnly-SameSite-None</code></td>
-                            <td>None</td>
-                            <td>True</td>
-                            <td>True</td>
+                            <td class="text-white">None</td>
+                            <td class="text-white">True</td>
+                            <td class="text-white">True</td>
                         </tr>
                         <tr>
                             <td><code>HttpOnly-SameSite-Lax</code></td>
-                            <td>None</td>
-                            <td>True</td>
-                            <td>False</td>
+                            <td class="text-white">None</td>
+                            <td class="text-white">True</td>
+                            <td class="text-white">False</td>
                         </tr>
                         <tr>
                             <td><code>HttpOnly-SameSite-Strict</code></td>
-                            <td>None</td>
-                            <td>True</td>
-                            <td>False</td>
+                            <td class="text-white">None</td>
+                            <td class="text-white">True</td>
+                            <td class="text-white">False</td>
                         </tr>
                         <tr>
                             <td><code>HttpOnly-Undefined-SameSite</code></td>
-                            <td>[undefined]</td>
-                            <td>True</td>
-                            <td>False</td>
+                            <td class="text-white">[undefined]</td>
+                            <td class="text-white">True</td>
+                            <td class="text-white">False</td>
                         </tr>
                     </tbody>
                 </table>
