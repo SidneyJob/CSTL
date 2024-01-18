@@ -4925,10 +4925,10 @@ textarea.form-control-lg {
 }
 
 .list-group {
-  --bs-list-group-color: var(--bs-body-color);
-  --bs-list-group-bg: var(--bs-body-bg);
-  --bs-list-group-border-color: var(--bs-border-color);
-  --bs-list-group-border-width: var(--bs-border-width);
+  --bs-list-group-color: white;
+  --bs-list-group-bg: #1c1e29;
+  --bs-list-group-border-color: #1c1e29;
+  --bs-list-group-border-width: 0;
   --bs-list-group-border-radius: var(--bs-border-radius);
   --bs-list-group-item-padding-x: 1rem;
   --bs-list-group-item-padding-y: 0.5rem;
@@ -4938,7 +4938,7 @@ textarea.form-control-lg {
   --bs-list-group-action-active-color: var(--bs-body-color);
   --bs-list-group-action-active-bg: var(--bs-secondary-bg);
   --bs-list-group-disabled-color: var(--bs-secondary-color);
-  --bs-list-group-disabled-bg: var(--bs-body-bg);
+  --bs-list-group-disabled-bg: #1c1e29;
   --bs-list-group-active-color: #fff;
   --bs-list-group-active-bg: #1c1e29;
   --bs-list-group-active-border-color: #1c1e29;
@@ -11897,6 +11897,10 @@ form textarea {
 }
 
 #AllForms {
+  color: white;
+}
+
+tbody {
   color: white;
 }
 

@@ -7,6 +7,12 @@ $secondary: #33354b;
 $table-bg: $primary;
 $form-check-input-checked-bg-color: $code-color;
 
+$list-group-color: white;
+$list-group-bg:  $primary;       
+$list-group-border-color: $primary;
+$list-group-border-width: 0;
+
+
 // import bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
@@ -15,6 +21,7 @@ $form-check-input-checked-bg-color: $code-color;
   color: $primary;
 }
 
+// icon things
 svg path {
   fill: white;
 }
@@ -58,5 +65,9 @@ form textarea {
 
 // labels for checkboxes in /attack page
 #AllForms {
+  color: white;
+}
+
+tbody {
   color: white;
 }
