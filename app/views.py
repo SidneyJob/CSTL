@@ -37,6 +37,27 @@ def docs_env():
     )
 
 
+@lab_views.route('/docs/cookies', methods=['POST', 'GET'])
+def docs_cookies():
+    return make_response(
+        render_template("docs/cookies.html")
+    )
+
+
+@lab_views.route('/docs/cors_testing', methods=['POST', 'GET'])
+def docs_cors():
+    return make_response(
+        render_template("docs/cors_testing.html")
+    )
+
+
+@lab_views.route('/docs/exploit_creator', methods=['POST', 'GET'])
+def docs_exploit():
+    return make_response(
+        render_template("docs/exploit_creator.html")
+    )
+
+
 @lab_views.route('/cors_testing', methods=['POST', 'GET'])
 def cors_attack_route():
     return make_response(
