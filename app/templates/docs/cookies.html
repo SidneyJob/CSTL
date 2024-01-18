@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 p-1 text-start text-white">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h2>Типы кук</h2>
+            <p class="b-lead"> Куки нужны для проверки, была ли произведена аутентификация на ендпоинте. Мы использовали их для исследования поведений браузеров, что можете сделать и вы, но уже в своих исследованиях.</p>
+
+            <table class="table ms-2">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-white">Name</th>
+                        <th scope="col" class="text-white">SameSite</th>
+                        <th scope="col" class="text-white">HttpOnly</th>
+                        <th scope="col" class="text-white">Secure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>SameSite-None</code></td>
+                        <td class="text-white">None</td>
+                        <td class="text-white">False</td>
+                        <td class="text-white">True</td>
+                    </tr>
+                    <tr>
+                        <td><code>SameSite-Lax</code></td>
+                        <td class="text-white">Lax</td>
+                        <td class="text-white">False</td>
+                        <td class="text-white">False</td>
+                    </tr>
+                    <tr>
+                        <td><code>SameSite-Strict</code></td>
+                        <td class="text-white">Strict</td>
+                        <td class="text-white">False</td>
+                        <td class="text-white">False</td>
+                    </tr>
+                    <tr>
+                        <td><code>Undefined-SameSite</code></td>
+                        <td class="text-white">[undefined]</td>
+                        <td class="text-white">False</td>
+                        <td class="text-white">False</td>
+                    </tr>
+                    <tr>
+                        <td><code>HttpOnly-SameSite-None</code></td>
+                        <td class="text-white">None</td>
+                        <td class="text-white">True</td>
+                        <td class="text-white">True</td>
+                    </tr>
+                    <tr>
+                        <td><code>HttpOnly-SameSite-Lax</code></td>
+                        <td class="text-white">None</td>
+                        <td class="text-white">True</td>
+                        <td class="text-white">False</td>
+                    </tr>
+                    <tr>
+                        <td><code>HttpOnly-SameSite-Strict</code></td>
+                        <td class="text-white">None</td>
+                        <td class="text-white">True</td>
+                        <td class="text-white">False</td>
+                    </tr>
+                    <tr>
+                        <td><code>HttpOnly-Undefined-SameSite</code></td>
+                        <td class="text-white">[undefined]</td>
+                        <td class="text-white">True</td>
+                        <td class="text-white">False</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    </div>
+</div>
+{% endblock %}
